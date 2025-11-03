@@ -46,11 +46,11 @@ public class ProcessTrustBL extends ExtentReportBuilder {
 	/*
 	 * TestScenario-Verify that  User is able to navigate to Process Trust tab 
 	 */
-
+	
 	public void navigationProcessTrust(WebDriver driver) throws Exception {
 
 	
-		Thread.sleep(15000);
+		Thread.sleep(25000);
 		objCM.waitUntillVisibilityOfElement(driver, objProTrustOR.menubutton,due);
 		try {
 			mthName = new Object() {

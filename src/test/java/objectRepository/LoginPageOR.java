@@ -12,6 +12,8 @@ public class LoginPageOR {
 	public By Pass=By.id("i0118");
 	public By nextbutton=By.id("idSIButton9");
 	
+	public By yesButton=By.id("idSIButton9");
+	
 	
 	
 	
