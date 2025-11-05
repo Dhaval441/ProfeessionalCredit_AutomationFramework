@@ -185,4 +185,214 @@ public class ProcessedTrustTC   extends ApplicationSetup {
 
 
 	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_06_VerifyTrustListBydateandallExportType(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all Export Type filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallExportType(driver);
+
+
+
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all export type to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_07_VerifyTrustListBydateandallTrustReceiptMethod(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all trust receipt method filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallTrustReceiptMethod(driver);
+
+
+
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all trust receipt method to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_08_VerifyTrustListBydateandallACH_CH(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all ACH/CH using filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallACH_CH(driver);
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all ACH/CH options to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_09_VerifyTrustListBydateandallTrustFreq(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all Option Trust frequency using filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallTrustFreq(driver);
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all Option Trust frequency to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_10_VerifyTrustListBydateandallG_L_Code(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all Option from G/L Code using filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallG_L_Code(driver);
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all Option from G/L Code to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_11_VerifyTrustListBydateandallERPReport(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all Option ERP Export reports using filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallERPReport(driver);
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all Option ERP Export reports to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test(groups = { "Smoke", "Regression" })
+	@Parameters({"browser"})
+	public void TC_12_VerifyTrustListBydateandallPublishStatus(String browser) throws NullPointerException, ParseException, IOException {
+		ExtentReportBuilder.ReportInitialization("Applying run date And select all Option Publish Status using filter displays available processed trusts TC" + " - " + browser);
+
+		try {
+			objCU.browserTCcounter(browser);
+
+			objProcdTrustBL.verifytrustprocessedbydateandallPublishStatus(driver);
+
+			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+			ExtentReportBuilder.ReportTestStep("Applying Date filter and select all Option Publish Status to processed trust listing is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"PASS", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+		}catch(Exception e)
+		{
+			Thread thread = new Thread();
+			thread.interrupt();
+			log.info(e.getMessage());
+			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+					"ERROR", objCU.generateRandomNumericString());
+			ExtentReportBuilder.CompleteTest();
+			Assert.fail();
+		}
+
+
+	}
 }
