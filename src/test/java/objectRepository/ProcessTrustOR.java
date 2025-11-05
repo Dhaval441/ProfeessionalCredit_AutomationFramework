@@ -141,8 +141,11 @@ public class ProcessTrustOR {
 	 * 5. Try to enter future date in run date option
 	 */
 	
+	/*
+	 * Closing The process trust tab
+	 */
 	
-	
+	public By CloseTab_1=By.xpath("//i[@class='fa fa-times icon-remove']");
 	
 	
 	

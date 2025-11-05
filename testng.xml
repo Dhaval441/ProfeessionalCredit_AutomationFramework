@@ -9,12 +9,14 @@
 	<parameter name="testing" value="UI"/>
 
 	<test name="Professional Credit(ARTrail) Test">
-		<classes>
-			<class name="testCases.LoginTC" />
-			<class name="testCases.ProcessTrustTC" >
+	 <classes>
 
-              </class>	
-       	</classes>
+            <class name="testCases.LoginTC" />
+
+            <class name="testCases.ProcessTrustTC"/>
+            <class name="testCases.ProcessedTrustTC" />
+
+       </classes>
 	</test> <!-- Test -->
 	</suite> <!-- Suite --> 
 		

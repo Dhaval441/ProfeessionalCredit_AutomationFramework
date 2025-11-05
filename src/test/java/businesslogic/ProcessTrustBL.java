@@ -856,7 +856,10 @@ public class ProcessTrustBL extends ExtentReportBuilder {
 			e.printStackTrace();
 			Assert.fail();
 		}
-
+		driver.switchTo().defaultContent();
+//		driver.switchTo().parentFrame();
+		objCM.onMouseHover(driver, objProTrustOR.CloseTab_1);
+		
 
 	}
 
