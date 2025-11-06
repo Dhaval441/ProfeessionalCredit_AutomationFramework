@@ -396,7 +396,7 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 				objCM.onMouseHover(driver, objProssdTrustOR.ApplyButton);
 				objCM.onMouseHover(driver, objProssdTrustOR.dropdownSeleTrustFreq);
 				objCM.onMouseHover(driver, objProssdTrustOR.SelectAllTrustFreq);
-			
+				objCM.onMouseHover(driver, objProssdTrustOR.DivertButton);
 				objCM.onMouseHover(driver, objProssdTrustOR.ViewButton);
 				//need to change Xpath following Webelemnt
 				objCM.listObjecLocater(driver, objProssdTrustOR.listRe);
@@ -439,10 +439,11 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 				objCM.setText(driver, objProssdTrustOR.EnterFromDate,"01/01/2025");
 				objCM.setText(driver, objProssdTrustOR.EnterToDate, "11/03/2025");
 				objCM.onMouseHover(driver, objProssdTrustOR.ApplyButton);
+				objCM.onMouseHover(driver, objProssdTrustOR.AdvancedFilterButton);
 				objCM.onMouseHover(driver, objProssdTrustOR.dropdownSeleG_LCode);
 				objCM.onMouseHover(driver, objProssdTrustOR.SelectAllG_LCode);
-			
-				objCM.onMouseHover(driver, objProssdTrustOR.ViewButton);
+				objCM.onMouseHover(driver, objProssdTrustOR.DivertButton);
+				objCM.onMouseHover(driver, objProssdTrustOR.AdvViewButton);
 				//need to change Xpath following Webelemnt
 				objCM.listObjecLocater(driver, objProssdTrustOR.listRe);
 				objCM.listObjecLocater(driver, objProssdTrustOR.listCount);
@@ -464,7 +465,7 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 			e.printStackTrace();
 			Assert.fail();
 		}
-		objCM.onMouseHover(driver, objProssdTrustOR.ClearFilter);
+		objCM.onMouseHover(driver, objProssdTrustOR.AdvClearButton);
 	}
 	
 	
@@ -486,8 +487,8 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 				objCM.onMouseHover(driver, objProssdTrustOR.ApplyButton);
 				objCM.onMouseHover(driver, objProssdTrustOR.dropdownSeleERPReports);
 				objCM.onMouseHover(driver, objProssdTrustOR.SelectAllERPReports);
-			
-				objCM.onMouseHover(driver, objProssdTrustOR.ViewButton);
+				objCM.onMouseHover(driver, objProssdTrustOR.RedropdownSeleERPReports);
+				objCM.onMouseHover(driver, objProssdTrustOR.AdvViewButton);
 				//need to change Xpath following Webelemnt
 				objCM.listObjecLocater(driver, objProssdTrustOR.listRe);
 				objCM.listObjecLocater(driver, objProssdTrustOR.listCount);
@@ -531,7 +532,7 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 				objCM.onMouseHover(driver, objProssdTrustOR.dropdownSelePublishStatus);
 				objCM.onMouseHover(driver, objProssdTrustOR.SelectAllPublishStatus);
 			
-				objCM.onMouseHover(driver, objProssdTrustOR.ViewButton);
+				objCM.onMouseHover(driver, objProssdTrustOR.AdvViewButton);
 				//need to change Xpath following Webelemnt
 				objCM.listObjecLocater(driver, objProssdTrustOR.listRe);
 				objCM.listObjecLocater(driver, objProssdTrustOR.listCount);
@@ -553,7 +554,7 @@ public class ProcessedTrustBL extends ExtentReportBuilder {
 			e.printStackTrace();
 			Assert.fail();
 		}
-		objCM.onMouseHover(driver, objProssdTrustOR.ClearFilter);
+		objCM.onMouseHover(driver, objProssdTrustOR.AdvClearButton);
 	}
 	
 	//For testing change

@@ -74,18 +74,23 @@ public class ProcessedTrustOR {
 	 */
 	public By dropdownSeleTrustFreq =By.xpath("//div[@class='row pt-4']//span[@class='placeholder'][normalize-space()='Select Trust Frequency']");
 	public By SelectAllTrustFreq=By.xpath("//body[1]/div[1]/section[2]/div[1]/div[2]/div[4]/div[1]/div[1]/ul[1]/li[1]/label[1]");
+	public By DivertButton=By.xpath("//div[@id='TrustDetails']//h3[@class='card-title']");
 	
 	/*
 	 * User is able to select date and Select from G/L Code using using filters and able to view records 
 	 */
 	public By dropdownSeleG_LCode =By.xpath("//div[@id='advanceTrustProcessedFiltersSection_1']//div[@class='form-group float-label-control']//span[@class='placeholder']");
 	public By SelectAllG_LCode=By.xpath("//div[@id='advanceTrustProcessedFiltersSection_1']//div[@class='form-group float-label-control']//li[@class='ms-select-all']//input[@type='checkbox']");
+	public By AdvancedFilterButton=By.xpath("//a[@id='advancedTrustProcessedFilter']");
+	public By AdvViewButton=By.xpath("//button[@class='btn btn-success viewTrustProc']");
+	public By AdvClearButton= By.xpath("//button[@class='btn btn-danger clearTrustBtn']");
 	
 	/*
 	 * User is able to select date and Select from ERP Export reports using using filters and able to view records 
 	 */
 	public By dropdownSeleERPReports =By.xpath("//span[normalize-space()='Select ERP Export status']");
 	public By SelectAllERPReports=By.xpath("//body[1]/div[1]/section[2]/div[1]/div[4]/div[4]/div[1]/div[1]/ul[1]/li[1]/label[1]");
+	public By RedropdownSeleERPReports= By.xpath("//span[normalize-space()='All selected']");
 	
 	/*
 	 * User is able to select date and Select from Publish Status using using filters and able to view records 
