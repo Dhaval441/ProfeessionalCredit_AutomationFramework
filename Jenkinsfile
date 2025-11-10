@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git branch: 'dev_branch',
+                git branch: 'master',
                     url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework'
             }
         }
