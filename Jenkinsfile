@@ -6,17 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],         // change if using master/dev
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework.git'
-                    ]]
-                ])
-            }
-        }
 
         stage('Build Project') {
             steps {
@@ -32,7 +21,7 @@ pipeline {
 
         stage('Finalising') {
             steps {
-                echo 'Automation suite execution finished for Professional Credit Framework.'
+                echo 'Automation suite execution finished.'
             }
         }
     }
