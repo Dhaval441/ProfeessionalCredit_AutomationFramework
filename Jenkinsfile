@@ -12,7 +12,7 @@ pipeline {
                         url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework'
                     ]],
                     extensions: [
-                        [$class: 'CloneOption', timeout: 30, shallow: true, depth: 1]
+                        [$class: 'CloneOption', timeout: 60, shallow: true, depth: 1]
                     ]
                 ])
             }
