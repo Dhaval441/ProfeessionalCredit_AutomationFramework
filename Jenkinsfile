@@ -15,13 +15,14 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                bat 'cmd.exe /c mvn clean install'
+               bat 'mvn clean install'
+
             }
         }
 
         stage('Run Automation Tests') {
             steps {
-                bat 'cmd.exe /c mvn test'
+                bat 'mvn test'
             }
         }
 
