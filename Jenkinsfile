@@ -12,13 +12,15 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'mvn clean install -DskipTests'
+               bat 'mvn clean install'
+
             }
         }
 
         stage('Run Automation Tests') {
             steps {
-                sh 'mvn clean test'
+           bat 'mvn test'
+
             }
         }
 
