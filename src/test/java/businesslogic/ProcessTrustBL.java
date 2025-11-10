@@ -50,7 +50,7 @@ public class ProcessTrustBL extends ExtentReportBuilder {
 	public void navigationProcessTrust(WebDriver driver) throws Exception {
 
 	
-		Thread.sleep(25000);
+		Thread.sleep(50000);
 		objCM.waitUntillVisibilityOfElement(driver, objProTrustOR.menubutton,due);
 		try {
 			mthName = new Object() {
