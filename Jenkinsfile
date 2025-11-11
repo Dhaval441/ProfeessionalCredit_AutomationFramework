@@ -1,13 +1,18 @@
 pipeline {
     agent any
 
+    // ✅ This enables automatic GitHub Webhook triggering
+    triggers {
+        githubPush()
+    }
+
     stages {
 
         stage('Checkout Code') {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/master']],
+                    branches: [[name: '*/master']],   // ✅ Change to */main if your repo default branch is main
                     userRemoteConfigs: [[
                         url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework'
                     ]],
