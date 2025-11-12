@@ -57,7 +57,7 @@ public class LoginTC extends ApplicationSetup {
 		try {
 		objCU.browserTCcounter(browser);
 	
-		Thread.sleep(120000);
+		Thread.sleep(60000);
 		objLoginBL.userLogin(driver, ApplicationSetup.UID, ApplicationSetup.PAS);
 
 		

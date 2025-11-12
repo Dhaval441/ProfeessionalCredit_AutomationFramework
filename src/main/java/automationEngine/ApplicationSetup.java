@@ -133,13 +133,22 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				ChromeOptions options = new ChromeOptions();
 				System.setProperty("webdriver.chrome.whitelistedIps", "");
 				
-					downloadpath = currentDir + "/Download";
+			//		downloadpath = currentDir + "/Download";
+				WebDriverManager.chromedriver().setup();
+
 					options.addArguments("--ignore-certificate-errors");
 					options.addArguments("--disable-extensions");
 					options.addArguments("--allow-running-insecure-content");
 					//options.addArguments("--disable-dev-shm-usage");
 					//options.addArguments("--no-sandbox", "--headless", "--window-size=1980,1080");
 					objCU.printToConsole("Started Options");
+					//For headless mode
+//					ChromeOptions options2 = new ChromeOptions();
+//					options2.addArguments("--headless=new"); // run in headless mode
+//					options2.addArguments("--disable-gpu");
+//					options2.addArguments("--window-size=1920,1080");
+//					WebDriver driver = new ChromeDriver(options);
+
 				
 				LoggingPreferences logPrefs = new LoggingPreferences();
 				logPrefs.enable(LogType.BROWSER, Level.ALL);
