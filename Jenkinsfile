@@ -1,36 +1,43 @@
 pipeline {
     agent any
 
-    // ✅ This enables automatic GitHub Webhook triggering
-    triggers {
-        githubPush()
-    }
-
     stages {
-
         stage('Checkout Code') {
             steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/master']],   // ✅ Change to */main if your repo default branch is main
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework'
-                    ]],
-                    extensions: [
-                        [$class: 'CloneOption', timeout: 60, shallow: true, depth: 1]
-                    ]
-                ])
+                git branch: 'master', url: 'https://github.com/Dhaval441/ProfeessionalCredit_AutomationFramework.git'
+            }
+        }
+
+        stage('Build & Run Tests') {
+            steps {
+                // Run your testng.xml via Maven
+                bat 'mvn clean test -DsuiteXmlFile=testng.xml'
             }
         }
 
         stage('Publish Reports') {
             steps {
-                publishHTML(target: [
-                    reportName: 'Test Execution Report',
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
                     reportDir: 'target/surefire-reports',
-                    reportFiles: 'index.html'
+                    reportFiles: 'index.html',
+                    reportName: 'Test Execution Report'
                 ])
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo '✅ Build and tests succeeded!'
+        }
+        failure {
+            echo '❌ Build or tests failed!'
         }
     }
 }
