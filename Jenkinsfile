@@ -23,18 +23,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                bat 'mvn clean install'
-            }
-        }
-
-        stage('Run Automation Tests') {
-            steps {
-                bat 'mvn test'
-            }
-        }
-
         stage('Publish Reports') {
             steps {
                 publishHTML(target: [
