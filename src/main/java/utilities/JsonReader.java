@@ -9,6 +9,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import java.io.IOException;
+import java.util.List;
+
 
 import org.json.JSONObject;
 
@@ -126,39 +134,42 @@ public class JsonReader {
      * Reads JSON data from a file using Path.
      *
      * @return JsonNode containing the Formatted JSon Data.
+     * @throws IllegalAccessException 
+     * @throws IllegalArgumentException 
      */
-    public JsonNode readTestDataForJsonKey(String jsonKey) throws JsonProcessingException, IOException {
-
-        var testCaseDataJsonFile = new File(JSON_FILE_PATH);
-        var testCaseDataJsonNode = objectMapper.readTree(testCaseDataJsonFile);
-        return testCaseDataJsonNode.get(jsonKey);
+    public JsonNode readTestDataForJsonKey(String jsonKey) throws JsonProcessingException, IOException, IllegalArgumentException, IllegalAccessException {
+        Map fileContent = null;
+		JSONObject jsonObject = new JSONObject(fileContent);   // Create JSON object from file content
+        Field testCaseDataJsonNode = null;
+		return (JsonNode) testCaseDataJsonNode.get(jsonKey);
     }
-    
-    
+
     /**
      * Reads JSON data from a file using Json Path.
      *
      * @return String containing single value from Json Data.
      */
     public String readTestDataUsingJsonPath(String jsonKey) throws JsonProcessingException, IOException {
-
-        var testCaseDataJsonFile = new File(JSON_FILE_PATH);
-        DocumentContext doc = JsonPath.parse(testCaseDataJsonFile);
+        Map fileContent = null;
+		JSONObject jsonObject = new JSONObject(fileContent);
+        Object testCaseDataJsonFile = null;
+		DocumentContext doc = JsonPath.parse(testCaseDataJsonFile);
         return doc.read(jsonKey);
     }
-    
+
     /**
      * Reads JSON data from a file using Json Path.
      *
      * @return List of String containing List of values based on Json Path.
      */
     public List<String> readTestDataListUsingJsonPath(String jsonKey) throws JsonProcessingException, IOException {
-
-        var testCaseDataJsonFile = new File(JSON_FILE_PATH);
-        DocumentContext doc = JsonPath.parse(testCaseDataJsonFile);
+        Map fileContent = null;
+		JSONObject jsonObject = new JSONObject(fileContent);
+        Object testCaseDataJsonFile = null;
+		DocumentContext doc = JsonPath.parse(testCaseDataJsonFile);
         return doc.read(jsonKey);
     }
-    
+
    
     
 
