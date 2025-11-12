@@ -6,7 +6,7 @@
 	<parameter name="environment" value="Dev" />	
 	<parameter name="browser" value="Chrome" />
 	<parameter name="nodeUrl" value=""/>
-	<parameter name="testing" value="UI"/>
+	<parameter name="testing" value="UI"/>	
 
 	<test name="Professional Credit(ARTrail) Test">
 	 <classes>
