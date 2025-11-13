@@ -1,23 +1,24 @@
 pipeline {
     agent any
-
     stages {
-        stage('Build and Test') {
+        stage('Build & Test') {
             steps {
-                script {
-                    // your test commands here
-                    bat 'mvn clean test'  // or 'sh' for Linux
-                }
+                bat 'mvn clean test'
             }
         }
     }
-
     post {
-        success {
-            githubNotify context: 'CI/tests', status: 'SUCCESS', description: 'All tests passed'
-        }
         failure {
-            githubNotify context: 'CI/tests', status: 'FAILURE', description: 'Tests failed'
+            bat '''
+                git config user.name "Jenkins CI"
+                git config user.email "jenkins@example.com"
+                REM Get the latest commit hash
+                for /f %%i in ('git rev-parse HEAD') do set LAST_COMMIT=%%i
+                REM Revert the last commit
+                git revert --no-edit %LAST_COMMIT%
+                REM Push the revert to remote
+                git push origin HEAD:master
+            '''
         }
     }
 }
