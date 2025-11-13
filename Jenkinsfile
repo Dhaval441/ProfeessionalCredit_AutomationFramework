@@ -1,13 +1,23 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven-3.9.11'
-    }
+
     stages {
-        stage('Build & Run Tests') {
+        stage('Build and Test') {
             steps {
-                bat "mvn clean test -DsuiteXmlFile=testng.xml"
+                script {
+                    // your test commands here
+                    bat 'mvn clean test'  // or 'sh' for Linux
+                }
             }
+        }
+    }
+
+    post {
+        success {
+            githubNotify context: 'CI/tests', status: 'SUCCESS', description: 'All tests passed'
+        }
+        failure {
+            githubNotify context: 'CI/tests', status: 'FAILURE', description: 'Tests failed'
         }
     }
 }
