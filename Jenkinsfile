@@ -1,7 +1,12 @@
 pipeline {
     agent any
+
+    tools {
+        maven 'Maven-3.9.11'   // 👈 Use the name you configured in Global Tool Configuration
+    }
+
     stages {
-        stage('Build & Test') {
+        stage('Build and Test') {
             steps {
                 bat 'mvn clean test'
             }
@@ -9,16 +14,11 @@ pipeline {
     }
     post {
         failure {
-            bat '''
-                git config user.name "Jenkins CI"
-                git config user.email "jenkins@example.com"
-                REM Get the latest commit hash
-                for /f %%i in ('git rev-parse HEAD') do set LAST_COMMIT=%%i
-                REM Revert the last commit
-                git revert --no-edit %LAST_COMMIT%
-                REM Push the revert to remote
-                git push origin HEAD:master
-            '''
+            githubNotify context: 'Build', status: 'FAILURE', description: 'Build failed — stopping push'
+            error("Build failed, stopping the pipeline.")
+        }
+        success {
+            githubNotify context: 'Build', status: 'SUCCESS', description: 'Build passed successfully'
         }
     }
 }
