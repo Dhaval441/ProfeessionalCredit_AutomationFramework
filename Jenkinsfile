@@ -1,37 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Run Automation Tests') {
             steps {
-                checkout scm
-            }
-        }
-        stage('Build & Test') {
-            steps {
-                bat 'mvn clean test'  // Make sure cmd.exe is in PATH
+                bat 'mvn clean test' // Or your bat command
             }
         }
     }
     post {
         success {
-            githubNotify(
-                status: 'SUCCESS',
-                description: 'Build successful',
-                repo: 'Dhaval441/ProfeessionalCredit_AutomationFramework',
-                credentialsId: '5043bc42-7991-4f06-840a-96fb490e3931',
-                sha: "${env.GIT_COMMIT}",
-                account: 'Dhaval441'
-            )
+            echo 'Tests passed. Proceeding with deployment.'
+            // Call deployment stage/script here
         }
         failure {
-            githubNotify(
-                status: 'FAILURE',
-                description: 'Build failed',
-                repo: 'Dhaval441/ProfeessionalCredit_AutomationFramework',
-                credentialsId: '5043bc42-7991-4f06-840a-96fb490e3931',
-                sha: "${env.GIT_COMMIT}",
-                account: 'Dhaval441'
-            )
+            echo 'Tests failed. Stopping deployment.'
+            error('Stopping deployment due to failed tests')
         }
     }
 }
