@@ -8,21 +8,18 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                // Run your automation scripts
                 bat 'mvn clean test'
             }
         }
     }
     post {
-        success {
-            // Mark the commit as successful
-            githubNotify context: 'CI/CD', status: 'SUCCESS', description: 'Build Passed'
-        }
         failure {
-            // Mark the commit as failed
-            githubNotify context: 'CI/CD', status: 'FAILURE', description: 'Build Failed'
-            // Optionally, fail the pipeline explicitly
-            error("Build failed, stopping further merge/commit")
+            githubNotify(
+                status: 'FAILURE',
+                repo: 'Dhaval441/ProfeessionalCredit_AutomationFramework',
+                credentialsId: '5043bc42-7991-4f06-840a-96fb490e3931',
+                sha: "${env.GIT_COMMIT}"
+            )
         }
     }
 }
