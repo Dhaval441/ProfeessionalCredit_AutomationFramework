@@ -1,23 +1,28 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build & Test') {
             steps {
-                withMaven(maven: 'Maven-3.9.11') {
-                    bat 'mvn clean test'
-                }
+                // Run your automation scripts
+                bat 'mvn clean test'
             }
         }
     }
     post {
         success {
-            githubNotify context: 'ProfeessionalCredit_AutomationFramework', status: 'SUCCESS', description: 'Build passed'
+            // Mark the commit as successful
+            githubNotify context: 'CI/CD', status: 'SUCCESS', description: 'Build Passed'
         }
         failure {
-            githubNotify context: 'ProfeessionalCredit_AutomationFramework', status: 'FAILURE', description: 'Build failed'
-        }
-        always {
-            githubNotify context: 'ProfeessionalCredit_AutomationFramework', status: 'PENDING', description: 'Build running'
+            // Mark the commit as failed
+            githubNotify context: 'CI/CD', status: 'FAILURE', description: 'Build Failed'
+            // Optionally, fail the pipeline explicitly
+            error("Build failed, stopping further merge/commit")
         }
     }
 }
