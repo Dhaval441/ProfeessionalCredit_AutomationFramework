@@ -13,9 +13,19 @@ pipeline {
         }
     }
     post {
+        success {
+            githubNotify(
+                status: 'SUCCESS',
+                description: 'Build successful',
+                repo: 'Dhaval441/ProfeessionalCredit_AutomationFramework',
+                credentialsId: '5043bc42-7991-4f06-840a-96fb490e3931',
+                sha: "${env.GIT_COMMIT}"
+            )
+        }
         failure {
             githubNotify(
                 status: 'FAILURE',
+                description: 'Build failed',
                 repo: 'Dhaval441/ProfeessionalCredit_AutomationFramework',
                 credentialsId: '5043bc42-7991-4f06-840a-96fb490e3931',
                 sha: "${env.GIT_COMMIT}"
