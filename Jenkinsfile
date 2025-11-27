@@ -1,20 +1,24 @@
 pipeline {
     agent any
+
     stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Run Automation Tests') {
             steps {
-                bat 'mvn clean test' // Or your bat command
+                sh 'mvn clean test'
             }
         }
     }
+
     post {
-        success {
-            echo 'Tests passed. Proceeding with deployment.'
-            // Call deployment stage/script here
-        }
         failure {
-            echo 'Tests failed. Stopping deployment.'
-            error('Stopping deployment due to failed tests')
+            echo "Tests failed. Stopping deployment."
+            error "Stopping deployment due to failed tests"
         }
     }
 }
