@@ -1,6 +1,7 @@
 package automationEngine;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -40,6 +41,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public static String PAS;
 	public static WebDriver driver;
 	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+	public static final String ENV_FILE = "datapool/EnvData.properties";
+
 	public static String browserName;
 	public static String environmentName;
 	static String downloadpath;
@@ -73,9 +76,14 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		
 		case "Dev":
 			
-			testURL=objCU.readPropertyFileEnvProperty(ConstantVariables.DEVURL);
-			UID=objCU.readPropertyFileEnvProperty(ConstantVariables.DEVUID);
-			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.DEVPAS);
+//			testURL = objCU.readEnvProperty("DEVURL");
+//			UID     = objCU.readEnvProperty("DEVUID");
+//			PAS     = objCU.readEnvProperty("DEVPAS");
+
+			
+			testURL=objCU.readEnvProperty(ConstantVariables.DEVURL);
+			UID=objCU.readEnvProperty(ConstantVariables.DEVUID);
+			PAS=objCU.readEnvProperty(ConstantVariables.DEVPAS);
 			break;
 		
 		case "PROD":
@@ -111,7 +119,11 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	 */
 	@SuppressWarnings("deprecation")
 	public WebDriver startBrowser(String browser,String nodeUrl) {
+		
+		
 		int wt = Integer.parseInt(objCU.readPropertyFile(filepath, ConstantVariables.TIMEOUTWAIT));
+		
+
 		log.debug("Timeout time set to : = " + wt);
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();

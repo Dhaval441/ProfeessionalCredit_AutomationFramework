@@ -85,6 +85,25 @@ public class CommonUtilities {
 		}
 		return value;
 	}
+	
+	public String readEnvProperty(String key) {
+	    Properties prop = new Properties();
+	    try (InputStream input = getClass().getClassLoader().getResourceAsStream("datapool/EnvData.properties")) {
+
+	        if (input == null) {
+	            System.out.println("❌ EnvData.properties NOT found in classpath!");
+	            return null;
+	        }
+
+	        prop.load(input);
+	        return prop.getProperty(key);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+
 
 	/**
 	 * Capture screenshot for full screen
