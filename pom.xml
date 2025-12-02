@@ -20,6 +20,7 @@
 	  <profile>
             <id>TestSequencial</id>
             <build>
+            		<pluginManagement>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
