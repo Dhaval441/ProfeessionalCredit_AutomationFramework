@@ -43,6 +43,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 //	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
 	public static String filepath = System.getProperty("user.dir") + "var\\lib\\jenkins\\workspace\\ArTrail Automation Testsuite\\src\\main\\resources\\datapool\\" + "EnvData.properties";
 	public static final String ENV_FILE = "datapool/EnvData.properties";
+	InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+
 
 	public static String browserName;
 	public static String environmentName;
@@ -121,6 +123,7 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	@SuppressWarnings("deprecation")
 	public WebDriver startBrowser(String browser,String nodeUrl) {
 		
+
 		
 		int wt = Integer.parseInt(objCU.readPropertyFile(filepath, ConstantVariables.TIMEOUTWAIT));
 		
