@@ -40,7 +40,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public static String UID;
 	public static String PAS;
 	public static WebDriver driver;
-	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+//	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+	public static String filepath = System.getProperty("user.dir") + "var\\lib\\jenkins\\workspace\\ArTrail Automation Testsuite\\src\\main\\resources\\datapool\\" + "EnvData.properties";
 	public static final String ENV_FILE = "datapool/EnvData.properties";
 
 	public static String browserName;
@@ -83,7 +84,7 @@ public class ApplicationSetup extends ExtentReportBuilder {
 			
 			testURL=objCU.readEnvProperty(ConstantVariables.DEVURL);
 			UID=objCU.readEnvProperty(ConstantVariables.DEVUID);
-			PAS=objCU.readEnvProperty(ConstantVariables.DEVPAS);
+			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.DEVPAS);
 			break;
 		
 		case "PROD":
