@@ -37,11 +37,18 @@ public class CommonUtilities {
 	WebDriver driver;
 	Properties prop;
 
-	File file = new File(System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\dataPool\\EnvData.properties");
-	String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
-	String resourcesPath = this.readPropertyFile(filepath, "ResourcesPath");
-	String reportsFolderPath = this.readPropertyFile(filepath, "TestReport");
+
+	private static final String DATA_POOL_RELATIVE = "src" + File.separator + "main" + File.separator + "resources"
+	        + File.separator + "datapool" + File.separator + "EnvData.properties";
+
+	File file = new File(System.getProperty("user.dir") + File.separator + DATA_POOL_RELATIVE);
+	String filepath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator
+	        + "resources" + File.separator + "datapool" + File.separator + "EnvData.properties";
+
+	// -- avoid invoking property reads at field init time; compute lazily instead:
+	private String resourcesPath = null;
+	private String reportsFolderPath = null;
+
 
 	/**
 	 * Highlight element on UI
@@ -103,6 +110,26 @@ public class CommonUtilities {
 	        return null;
 	    }
 	}
+	
+	public String getEnvProperty(String key) {
+	    try (InputStream input = getClass().getClassLoader()
+	            .getResourceAsStream("datapool/EnvData.properties")) {
+
+	        if (input == null) {
+	            System.out.println("EnvData.properties NOT found in classpath!");
+	            return null;
+	        }
+
+	        Properties p = new Properties();
+	        p.load(input);
+	        return p.getProperty(key);
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return null;
+	    }
+	}
+
 
 
 	/**

@@ -1,5 +1,6 @@
 package automationEngine;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -41,8 +42,9 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public static String PAS;
 	public static WebDriver driver;
 //	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
-	public static String filepath = System.getProperty("user.dir") + "var\\lib\\jenkins\\workspace\\ArTrail Automation Testsuite\\src\\main\\resources\\datapool\\" + "EnvData.properties";
-	public static final String ENV_FILE = "datapool/EnvData.properties";
+	public static String filepath = System.getProperty("user.dir")
+	        + File.separator + "src" + File.separator + "main" + File.separator + "resources"
+	        + File.separator + "datapool" + File.separator + "EnvData.properties";
 	InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
 
 
@@ -63,7 +65,7 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	@Parameters({ "environment", "browser", "nodeUrl", "groups","testing" })
 	public synchronized void init(@Optional("") String environment,@Optional("") String browser,@Optional("") String nodeUrl,@Optional("") String groups,@Optional("") String testing) throws Exception {
 		
-		testURL= objCU.readPropertyFileEnvProperty("DEVURL");
+		testURL= objCU.getEnvProperty("DEVURL");
 		environmentName = environment;
 		
 		System.out.println("URL is for testing before opening browser:   "+testURL);
@@ -84,9 +86,9 @@ public class ApplicationSetup extends ExtentReportBuilder {
 //			PAS     = objCU.readEnvProperty("DEVPAS");
 
 			
-			testURL=objCU.readEnvProperty(ConstantVariables.DEVURL);
-			UID=objCU.readEnvProperty(ConstantVariables.DEVUID);
-			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.DEVPAS);
+			testURL=objCU.getEnvProperty(ConstantVariables.DEVURL);
+			UID=objCU.getEnvProperty(ConstantVariables.DEVUID);
+			PAS=objCU.getEnvProperty(ConstantVariables.DEVPAS);
 			break;
 		
 		case "PROD":
@@ -125,8 +127,25 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		
 
 		
-		int wt = Integer.parseInt(objCU.readPropertyFile(filepath, ConstantVariables.TIMEOUTWAIT));
-		
+//		int wt = Integer.parseInt(objCU.getEnvProperty(filepath, ConstantVariables.TIMEOUTWAIT));
+
+		// safe timeout parse with default
+		int wt = 30; // default timeout seconds
+		try {
+		    String timeoutStr = objCU.readPropertyFileEnvProperty(ConstantVariables.TIMEOUTWAIT);
+		    if (timeoutStr == null || timeoutStr.trim().isEmpty()) {
+		        log.warn("Timeout value not found in properties at '" + filepath + "'. Using default: " + wt + "s");
+		    } else {
+		        try {
+		            wt = Integer.parseInt(timeoutStr.trim());
+		        } catch (NumberFormatException nfe) {
+		            log.warn("Invalid timeout value '" + timeoutStr + "' in properties. Using default: " + wt + "s");
+		        }
+		    }
+		} catch (Exception ex) {
+		    log.warn("Error reading timeout value from properties: " + ex.getMessage() + ". Using default: " + wt + "s");
+		}
+
 
 		log.debug("Timeout time set to : = " + wt);
 
@@ -261,7 +280,17 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		try {
 			driver.quit();
 			log.debug("Application Closed sucessfully");
-			Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
+//			Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
+
+			String os = System.getProperty("os.name").toLowerCase();
+			if (os.contains("win")) {
+			    Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
+			} else {
+			    log.debug("Non-Windows OS detected (" + os + "), skipping taskkill command.");
+			}
+
+			
+			
 			ExtentReportBuilder.ConcludeTestSuite();
 			//ExtentReportBuilder.SendEmailwithReport();
 		} catch (Exception e) {
