@@ -10,7 +10,6 @@
 
 	<test name="Professional Credit(ARTrail) Test">
 	 <classes>
-
             <class name="testCases.LoginTC" />
        </classes>
 	</test> <!-- Test -->
