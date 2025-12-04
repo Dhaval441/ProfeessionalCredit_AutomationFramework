@@ -41,10 +41,10 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	public static String UID;
 	public static String PAS;
 	public static WebDriver driver;
-//	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+	//	public static String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
 	public static String filepath = System.getProperty("user.dir")
-	        + File.separator + "src" + File.separator + "main" + File.separator + "resources"
-	        + File.separator + "datapool" + File.separator + "EnvData.properties";
+			+ File.separator + "src" + File.separator + "main" + File.separator + "resources"
+			+ File.separator + "datapool" + File.separator + "EnvData.properties";
 	InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
 
 
@@ -64,57 +64,57 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	@BeforeTest(alwaysRun = true)
 	@Parameters({ "environment", "browser", "nodeUrl", "groups","testing" })
 	public synchronized void init(@Optional("") String environment,@Optional("") String browser,@Optional("") String nodeUrl,@Optional("") String groups,@Optional("") String testing) throws Exception {
-		
+
 		testURL= objCU.getEnvProperty("DEVURL");
 		environmentName = environment;
-		
+
 		System.out.println("URL is for testing before opening browser:   "+testURL);
 
 		switch(environmentName) {
-		
+
 		case "QA":
-			
+
 			testURL=objCU.readPropertyFileEnvProperty(ConstantVariables.QAURL);
 			UID=objCU.readPropertyFileEnvProperty(ConstantVariables.QAUID);
 			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.QAPAS);
 			break;
-		
-		case "Dev":
-			
-//			testURL = objCU.readEnvProperty("DEVURL");
-//			UID     = objCU.readEnvProperty("DEVUID");
-//			PAS     = objCU.readEnvProperty("DEVPAS");
 
-			
+		case "Dev":
+
+			//			testURL = objCU.readEnvProperty("DEVURL");
+			//			UID     = objCU.readEnvProperty("DEVUID");
+			//			PAS     = objCU.readEnvProperty("DEVPAS");
+
+
 			testURL=objCU.getEnvProperty(ConstantVariables.DEVURL);
 			UID=objCU.getEnvProperty(ConstantVariables.DEVUID);
 			PAS=objCU.getEnvProperty(ConstantVariables.DEVPAS);
 			break;
-		
+
 		case "PROD":
-			
+
 			testURL=objCU.readPropertyFileEnvProperty(ConstantVariables.PRODURL);
 			UID=objCU.readPropertyFileEnvProperty(ConstantVariables.PRODUID);
 			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.PRODPAS);
 			break;
-			
+
 		case "Other":
-			
+
 			testURL=objCU.readPropertyFileEnvProperty(ConstantVariables.OTHERURL);
 			UID=objCU.readPropertyFileEnvProperty(ConstantVariables.OTHERUID);
 			PAS=objCU.readPropertyFileEnvProperty(ConstantVariables.OTHERPAS);
 			break;
-		
+
 		}
-		    System.out.println("URL for testing :  "+testURL);
-			startBrowser(browser,nodeUrl);
-			if(testing.equalsIgnoreCase("UI"))
-			{
-				driver.get(testURL);
-			}			
-			
+		System.out.println("URL for testing :  "+testURL);
+		startBrowser(browser,nodeUrl);
+		if(testing.equalsIgnoreCase("UI"))
+		{
+			driver.get(testURL);
+		}			
+
 		ExtentReportBuilder.initExtentReport();
-		
+
 	}
 
 	/**
@@ -124,26 +124,26 @@ public class ApplicationSetup extends ExtentReportBuilder {
 	 */
 	@SuppressWarnings("deprecation")
 	public WebDriver startBrowser(String browser,String nodeUrl) {
-		
 
-		
-//		int wt = Integer.parseInt(objCU.getEnvProperty(filepath, ConstantVariables.TIMEOUTWAIT));
+
+
+		//		int wt = Integer.parseInt(objCU.getEnvProperty(filepath, ConstantVariables.TIMEOUTWAIT));
 
 		// safe timeout parse with default
 		int wt = 30; // default timeout seconds
 		try {
-		    String timeoutStr = objCU.readPropertyFileEnvProperty(ConstantVariables.TIMEOUTWAIT);
-		    if (timeoutStr == null || timeoutStr.trim().isEmpty()) {
-		        log.warn("Timeout value not found in properties at '" + filepath + "'. Using default: " + wt + "s");
-		    } else {
-		        try {
-		            wt = Integer.parseInt(timeoutStr.trim());
-		        } catch (NumberFormatException nfe) {
-		            log.warn("Invalid timeout value '" + timeoutStr + "' in properties. Using default: " + wt + "s");
-		        }
-		    }
+			String timeoutStr = objCU.readPropertyFileEnvProperty(ConstantVariables.TIMEOUTWAIT);
+			if (timeoutStr == null || timeoutStr.trim().isEmpty()) {
+				log.warn("Timeout value not found in properties at '" + filepath + "'. Using default: " + wt + "s");
+			} else {
+				try {
+					wt = Integer.parseInt(timeoutStr.trim());
+				} catch (NumberFormatException nfe) {
+					log.warn("Invalid timeout value '" + timeoutStr + "' in properties. Using default: " + wt + "s");
+				}
+			}
 		} catch (Exception ex) {
-		    log.warn("Error reading timeout value from properties: " + ex.getMessage() + ". Using default: " + wt + "s");
+			log.warn("Error reading timeout value from properties: " + ex.getMessage() + ". Using default: " + wt + "s");
 		}
 
 
@@ -159,32 +159,35 @@ public class ApplicationSetup extends ExtentReportBuilder {
 			switch(browser){
 			case "Chrome":
 				WebDriverManager.chromedriver().setup();
-				
-			    //System.setProperty("webdriver.chrome.driver",SetObjectProperties.appConfig.getPropertyValue("ChromeDriver")); 
+
+				//System.setProperty("webdriver.chrome.driver",SetObjectProperties.appConfig.getPropertyValue("ChromeDriver")); 
 				objCU.printToConsole("Browser Driver executable downloaded");
 				capabilities.setBrowserName(browser);
 				String currentDir = System.getProperty("user.dir");
-				
+
 				ChromeOptions options = new ChromeOptions();
 				System.setProperty("webdriver.chrome.whitelistedIps", "");
-				
-			//		downloadpath = currentDir + "/Download";
+
+				//		downloadpath = currentDir + "/Download";
 				WebDriverManager.chromedriver().setup();
 
-					options.addArguments("--ignore-certificate-errors");
-					options.addArguments("--disable-extensions");
-					options.addArguments("--allow-running-insecure-content");
-					//options.addArguments("--disable-dev-shm-usage");
-					//options.addArguments("--no-sandbox", "--headless", "--window-size=1980,1080");
-					objCU.printToConsole("Started Options");
-					//For headless mode
-//					ChromeOptions options2 = new ChromeOptions();
-//					options2.addArguments("--headless=new"); // run in headless mode
-//					options2.addArguments("--disable-gpu");
-//					options2.addArguments("--window-size=1920,1080");
-//					WebDriver driver = new ChromeDriver(options);
+				options.addArguments("--ignore-certificate-errors");
+				options.addArguments("--disable-extensions");
+				options.addArguments("--allow-running-insecure-content");
+				options.addArguments("--disable-dev-shm-usage");
 
-				
+				options.addArguments("--headless");
+				options.addArguments("--window-size=1980,1080");
+				options.addArguments("--no-sandbox");
+				objCU.printToConsole("Started Options");
+				//For headless mode
+				//					ChromeOptions options2 = new ChromeOptions();
+				//					options2.addArguments("--headless=new"); // run in headless mode
+				//					options2.addArguments("--disable-gpu");
+				//					options2.addArguments("--window-size=1920,1080");
+				//					WebDriver driver = new ChromeDriver(options);
+
+
 				LoggingPreferences logPrefs = new LoggingPreferences();
 				logPrefs.enable(LogType.BROWSER, Level.ALL);
 				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
@@ -197,9 +200,9 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				chromePrefs.put("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
 				chromePrefs.put("download.extensions_to_open", "xml,csv,xls,xlsx,doc,docx,txt");
 				chromePrefs.put("profile.cookie_controls_mode", 0);
-				
+
 				objCU.printToConsole("Chrome Prefs enabled");
-				
+
 				options.setExperimentalOption("prefs", chromePrefs);
 				options.addArguments("--incognito");
 				options.addArguments("--start-maximized");
@@ -210,24 +213,24 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--remote-allow-origins=*");
-				if (!headLessFlag) {
-
-					options.addArguments("--start-maximized");
-				} else {
-
-					options.addArguments("--headless");
-					options.addArguments("--window-size=1980,1080");
-				}
+				//				if (!headLessFlag) {
+				//
+				//					options.addArguments("--start-maximized");
+				//				} else {
+				//
+				//					options.addArguments("--headless");
+				//					options.addArguments("--window-size=1980,1080");
+				//				}
 				DesiredCapabilities cap = new DesiredCapabilities();
 				cap.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
 				cap.setCapability(ChromeOptions.CAPABILITY, options);
 				cap.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
-				
+
 				options.merge(cap);
 
 				if (selGrid) {
 					System.out.println("Remote Node URL: " + nodeUrl);
-					
+
 					driver= new RemoteWebDriver(new java.net.URL(nodeUrl), cap);
 					driver.manage().window().maximize();
 				} else {
@@ -236,40 +239,40 @@ public class ApplicationSetup extends ExtentReportBuilder {
 					driver.manage().timeouts().implicitlyWait(wt,TimeUnit.SECONDS);
 				}
 				objCU.printToConsole("Browser Launched");
-				
-			break;
+
+				break;
 
 			case "Firefox":  
-			WebDriverManager.firefoxdriver().setup();
-			driver=new FirefoxDriver();
-			getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
-			log.debug(browser + " browser launch sucessfully");
-		    break;
+				WebDriverManager.firefoxdriver().setup();
+				driver=new FirefoxDriver();
+				getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
+				log.debug(browser + " browser launch sucessfully");
+				break;
 
 			case "Edge" :
-			WebDriverManager.edgedriver().setup();
-			driver=new EdgeDriver();
-			getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
-			log.debug(browser + " browser launch sucessfully");
-		    break;
+				WebDriverManager.edgedriver().setup();
+				driver=new EdgeDriver();
+				getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
+				log.debug(browser + " browser launch sucessfully");
+				break;
 
 			case "IE":
-			WebDriverManager.iedriver().setup();
-			driver=new InternetExplorerDriver();
-			getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
-			log.debug(browser + " browser launch sucessfully");
-		
-		log.debug("ThreadID in case of Parallel execution : " + Thread.currentThread().getId());
-		break;
+				WebDriverManager.iedriver().setup();
+				driver=new InternetExplorerDriver();
+				getDriver().manage().timeouts().implicitlyWait(wt, TimeUnit.SECONDS);
+				log.debug(browser + " browser launch sucessfully");
+
+				log.debug("ThreadID in case of Parallel execution : " + Thread.currentThread().getId());
+				break;
 			}
-		
-	} catch (Exception e) {
-		log.info(e.getMessage());
-		objCU.printToConsole(e.getMessage());
-	}
-		
+
+		} catch (Exception e) {
+			log.info(e.getMessage());
+			objCU.printToConsole(e.getMessage());
+		}
+
 		return getDriver();
-		
+
 	}
 
 	/**
@@ -280,17 +283,17 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		try {
 			driver.quit();
 			log.debug("Application Closed sucessfully");
-//			Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
+			//			Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
 
 			String os = System.getProperty("os.name").toLowerCase();
 			if (os.contains("win")) {
-			    Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
+				Runtime.getRuntime().exec("taskkill /F /IM chromedriver*");
 			} else {
-			    log.debug("Non-Windows OS detected (" + os + "), skipping taskkill command.");
+				log.debug("Non-Windows OS detected (" + os + "), skipping taskkill command.");
 			}
 
-			
-			
+
+
 			ExtentReportBuilder.ConcludeTestSuite();
 			//ExtentReportBuilder.SendEmailwithReport();
 		} catch (Exception e) {
@@ -311,5 +314,5 @@ public class ApplicationSetup extends ExtentReportBuilder {
 		return driver;
 	}
 
-	
+
 }
