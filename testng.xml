@@ -12,8 +12,6 @@
 	 <classes>
 
             <class name="testCases.LoginTC" />
-         
-
        </classes>
 	</test> <!-- Test -->
 	</suite> <!-- Suite --> 

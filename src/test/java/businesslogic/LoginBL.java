@@ -47,7 +47,7 @@ public class LoginBL extends ExtentReportBuilder {
 	try {
 		mthName = new Object() {
 		}.getClass().getEnclosingMethod().getName();
-//		Thread.sleep(5000);
+		Thread.sleep(5000);
 
 		
 		objCM.onMouseHover(driver, objLoginOR.loginButton);
@@ -58,7 +58,7 @@ public class LoginBL extends ExtentReportBuilder {
 		objCM.setText(driver, objLoginOR.Pass, "Mangad@@7040");
 		objCM.onMouseHover(driver, objLoginOR.nextbutton);
         // ✅ Wait until home button is visible & clickable
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(140)); // timeout 140s
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 140s
         WebElement homeElement = wait.until(ExpectedConditions.elementToBeClickable(objLoginOR.homeBtn));
 
         if (homeElement.isDisplayed()) {
