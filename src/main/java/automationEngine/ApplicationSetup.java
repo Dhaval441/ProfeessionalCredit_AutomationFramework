@@ -180,12 +180,6 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				options.addArguments("--window-size=1980,1080");
 				options.addArguments("--no-sandbox");
 				objCU.printToConsole("Started Options");
-				//For headless mode
-				//					ChromeOptions options2 = new ChromeOptions();
-				//					options2.addArguments("--headless=new"); // run in headless mode
-				//					options2.addArguments("--disable-gpu");
-				//					options2.addArguments("--window-size=1920,1080");
-				//					WebDriver driver = new ChromeDriver(options);
 
 
 				LoggingPreferences logPrefs = new LoggingPreferences();
