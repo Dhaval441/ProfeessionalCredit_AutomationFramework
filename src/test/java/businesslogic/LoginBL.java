@@ -55,8 +55,10 @@ public class LoginBL extends ExtentReportBuilder {
 		
 		objCM.setText(driver, objLoginOR.Username, "sa-qa-automation@professionalcredit.com");
 		objCM.onMouseHover(driver, objLoginOR.nextbutton);
-		objCM.setText(driver, objLoginOR.Pass, "AHG(Z?8M-a1PS0!r£@");
+		objCM.setText(driver, objLoginOR.Pass, "laiVeFL#f9C!xCvK1");
 		objCM.onMouseHover(driver, objLoginOR.nextbutton);
+		Thread.sleep(3000);
+		objCM.onMouseHover(driver, objLoginOR.yesButton);
         // ✅ Wait until home button is visible & clickable
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 140s
         WebElement homeElement = wait.until(ExpectedConditions.elementToBeClickable(objLoginOR.homeBtn));
