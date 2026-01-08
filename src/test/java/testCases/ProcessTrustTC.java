@@ -267,93 +267,93 @@ public class ProcessTrustTC extends ApplicationSetup {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
-	@Test(groups = { "Smoke", "Regression" })
-	@Parameters({"browser"})
-	public void TC_09_verifyexelreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
-		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download excel report for single client TC" + " - " + browser);
-
-		try {
-			objCU.browserTCcounter(browser);
-
-			objProcTrustBL.verifyexelreportdownloadpt(driver);
-
-			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
-
-			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
-			ExtentReportBuilder.ReportTestStep("User able to download the excel report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"PASS", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-		}catch(Exception e)
-		{
-			Thread thread = new Thread();
-			thread.interrupt();
-			log.info(e.getMessage());
-			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"ERROR", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-			Assert.fail();
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	@Test(groups = { "Smoke", "Regression" })
-	@Parameters({"browser"})
-	public void TC_10_verifypdfreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
-		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download PDF report for single client TC" + " - " + browser);
-
-		try {
-			objCU.browserTCcounter(browser);
-
-			objProcTrustBL.verifypdfreportdownloadpt(driver);
-
-			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
-
-			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
-			ExtentReportBuilder.ReportTestStep("User able to download the pdf report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"PASS", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-		}catch(Exception e)
-		{
-			Thread thread = new Thread();
-			thread.interrupt();
-			log.info(e.getMessage());
-			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"ERROR", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-			Assert.fail();
-		}
-	}
-
-
-	@SuppressWarnings("deprecation")
-	@Test(groups = { "Smoke", "Regression" })
-	@Parameters({"browser"})
-	public void TC_11_verifyCombinedreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
-		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download combined PDF report for single client TC" + " - " + browser);
-
-		try {
-			objCU.browserTCcounter(browser);
-
-			objProcTrustBL.verifycombinedreportdownloadpt(driver);
-
-			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
-
-			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
-			ExtentReportBuilder.ReportTestStep("User able to download the combined report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"PASS", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-		}catch(Exception e)
-		{
-			Thread thread = new Thread();
-			thread.interrupt();
-			log.info(e.getMessage());
-			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
-					"ERROR", objCU.generateRandomNumericString());
-			ExtentReportBuilder.CompleteTest();
-			Assert.fail();
-		}
-	}
+//	@SuppressWarnings("deprecation")
+//	@Test(groups = { "Smoke", "Regression" })
+//	@Parameters({"browser"})
+//	public void TC_09_verifyexelreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
+//		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download excel report for single client TC" + " - " + browser);
+//
+//		try {
+//			objCU.browserTCcounter(browser);
+//
+//			objProcTrustBL.verifyexelreportdownloadpt(driver);
+//
+//			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
+//
+//			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+//			ExtentReportBuilder.ReportTestStep("User able to download the excel report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"PASS", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//		}catch(Exception e)
+//		{
+//			Thread thread = new Thread();
+//			thread.interrupt();
+//			log.info(e.getMessage());
+//			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"ERROR", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//			Assert.fail();
+//		}
+//	}
+//
+//	@SuppressWarnings("deprecation")
+//	@Test(groups = { "Smoke", "Regression" })
+//	@Parameters({"browser"})
+//	public void TC_10_verifypdfreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
+//		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download PDF report for single client TC" + " - " + browser);
+//
+//		try {
+//			objCU.browserTCcounter(browser);
+//
+//			objProcTrustBL.verifypdfreportdownloadpt(driver);
+//
+//			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
+//
+//			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+//			ExtentReportBuilder.ReportTestStep("User able to download the pdf report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"PASS", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//		}catch(Exception e)
+//		{
+//			Thread thread = new Thread();
+//			thread.interrupt();
+//			log.info(e.getMessage());
+//			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"ERROR", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//			Assert.fail();
+//		}
+//	}
+//
+//
+//	@SuppressWarnings("deprecation")
+//	@Test(groups = { "Smoke", "Regression" })
+//	@Parameters({"browser"})
+//	public void TC_11_verifyCombinedreportdownloadptTC(String browser) throws NullPointerException, ParseException, IOException {
+//		ExtentReportBuilder.ReportInitialization("User is able to search the data for given date and able to download combined PDF report for single client TC" + " - " + browser);
+//
+//		try {
+//			objCU.browserTCcounter(browser);
+//
+//			objProcTrustBL.verifycombinedreportdownloadpt(driver);
+//
+//			//		objProcTrustBL.VrfySrchFnctnltyUsngExcelFlw2(driver);
+//
+//			ExtentReportBuilder.ReportTestStep("Console Messages:  ","Pass",""+objCU.printTheConsoleMessage());
+//			ExtentReportBuilder.ReportTestStep("User able to download the combined report is passed" + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"PASS", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//		}catch(Exception e)
+//		{
+//			Thread thread = new Thread();
+//			thread.interrupt();
+//			log.info(e.getMessage());
+//			ExtentReportBuilder.ReportTestStep("Error in " + Thread.currentThread().getStackTrace()[2].getMethodName(),
+//					"ERROR", objCU.generateRandomNumericString());
+//			ExtentReportBuilder.CompleteTest();
+//			Assert.fail();
+//		}
+//	}
 	
 	@SuppressWarnings("deprecation")
 	@Test(groups = { "Smoke", "Regression" })

@@ -87,9 +87,9 @@ public class ProcessTrustOR {
 	 * for applying run date & Selecting all values from Corporate name and Client name dropDown of advance filte
 	 */
 	public By dropdownCorporatename=By.xpath("//span[normalize-space()='Select Corporate Name']");
-	public By selectallCorporatename= By.xpath("(//input[@type='checkbox'])[29]");
+	public By selectallCorporatename= By.xpath("(//input[@type='checkbox'])[33]");
 	public By dropdownclientname=By.xpath("//span[normalize-space()='Select Client Name']");
-	public By selectallclientname= By.xpath("(//input[@type='checkbox'])[42]");
+	public By selectallclientname= By.xpath("(//input[@type='checkbox'])[471]");
 	
 	
 	
@@ -105,7 +105,7 @@ public class ProcessTrustOR {
 	 */
 	
 	public By ExcelReportDownload= By.xpath("//i[@class='fa fa-file-excel-o text-success']");
-	public By ActualClientname=By.xpath("//tr[td[text()='1']]/td[3]");
+	public By ActualClientname=By.xpath("//tr[@class=\"jqgfirstrow\"]/td[3]");
 
 	public By PDFReportDownload=By.xpath("//i[@class='fa fa-file-pdf-o text-danger']");
 	public By CombinedCheckbox=By.xpath("//div[@id='jqgh_hql_result2_cb']");
@@ -133,7 +133,7 @@ public class ProcessTrustOR {
 	/* 
 	 * 3. Selecting date 1 july, #1 DP Only in trust group showing No Results found
 	 */
-	public By SelectingDPONLY=By.xpath("//span[contains(text(),'#1 DP ONLY')]");
+	public By SelectingACHONLY=By.xpath("(//span[normalize-space()=\"ACH's, no special instructions\"])[1]");
 	public By ActualOPRecords=By.xpath("//p[normalize-space()='No Record(s) Found']");
 	
 	/*
