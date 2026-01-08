@@ -171,15 +171,15 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				//		downloadpath = currentDir + "/Download";
 				WebDriverManager.chromedriver().setup();
 
-				options.addArguments("--ignore-certificate-errors");
-				options.addArguments("--disable-extensions");
-				options.addArguments("--allow-running-insecure-content");
-				options.addArguments("--disable-dev-shm-usage");
-
-				options.addArguments("--headless");
-				options.addArguments("--window-size=1980,1080");
-				options.addArguments("--no-sandbox");
-				objCU.printToConsole("Started Options");
+//				options.addArguments("--ignore-certificate-errors");
+//				options.addArguments("--disable-extensions");
+//				options.addArguments("--allow-running-insecure-content");
+//				options.addArguments("--disable-dev-shm-usage");
+//
+//				options.addArguments("--headless=new");
+//				options.addArguments("--window-size=1920,1080");
+//				options.addArguments("--no-sandbox");	
+//				objCU.printToConsole("Started Options");
 
 
 				LoggingPreferences logPrefs = new LoggingPreferences();
@@ -198,15 +198,21 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				objCU.printToConsole("Chrome Prefs enabled");
 
 				options.setExperimentalOption("prefs", chromePrefs);
+				options.addArguments("--ignore-certificate-errors");
+				options.addArguments("--allow-running-insecure-content");
 				options.addArguments("--incognito");
-				options.addArguments("--start-maximized");
-				options.addArguments("--enable-extensions");
+				options.addArguments("--headless=new");
+				options.addArguments("--window-size=1920,1080");
+//				options.addArguments("--start-maximized");
+				options.addArguments("--disable-extensions");
+//				options.addArguments("--enable-extensions");
 				options.addArguments("disable-popup-blocking");
 				options.addArguments("disable-infobars");
 				options.addArguments("--disable-gpu");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--remote-allow-origins=*");
+				objCU.printToConsole("Started Options");
 				//				if (!headLessFlag) {
 				//
 				//					options.addArguments("--start-maximized");
@@ -215,21 +221,21 @@ public class ApplicationSetup extends ExtentReportBuilder {
 				//					options.addArguments("--headless");
 				//					options.addArguments("--window-size=1980,1080");
 				//				}
-				DesiredCapabilities cap = new DesiredCapabilities();
-				cap.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
-				cap.setCapability(ChromeOptions.CAPABILITY, options);
-				cap.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+//				DesiredCapabilities cap = new DesiredCapabilities();
+//				cap.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+//				cap.setCapability(ChromeOptions.CAPABILITY, options);
+//				cap.setCapability(CapabilityType.UNHANDLED_PROMPT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 
-				options.merge(cap);
+//				options.merge(cap);
 
 				if (selGrid) {
 					System.out.println("Remote Node URL: " + nodeUrl);
 
-					driver= new RemoteWebDriver(new java.net.URL(nodeUrl), cap);
-					driver.manage().window().maximize();
+//					driver= new RemoteWebDriver(new java.net.URL(nodeUrl), cap);
+//					driver.manage().window().maximize();
 				} else {
 					driver = new ChromeDriver(options);
-					driver.manage().window().maximize();
+//					driver.manage().window().maximize();
 					driver.manage().timeouts().implicitlyWait(wt,TimeUnit.SECONDS);
 				}
 				objCU.printToConsole("Browser Launched");
