@@ -63,6 +63,7 @@ public class LoginBL extends ExtentReportBuilder {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 140s
         WebElement homeElement = wait.until(ExpectedConditions.elementToBeClickable(objLoginOR.homeBtn));
 
+        objCM.onMouseHover(driver, objLoginOR.homeBtn);
         if (homeElement.isDisplayed()) {
             ExtentReportBuilder.ReportTestStep("PASSED", "PASS",
                     "User logged in to application successfully", mthName);

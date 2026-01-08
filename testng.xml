@@ -13,8 +13,8 @@
 	 <classes>
 
        	    <class name="testCases.LoginTC" />
- 	   	  <!--    <class name="testCases.ProcessTrustTC" />
- 				 <class name="testCases.ProcessedTrustTC" />-->
+ 	   	  <    <class name="testCases.ProcessTrustTC" />
+ 				 <!--class name="testCases.ProcessedTrustTC" />-->
        </classes>
 	</test> <!-- Test -->
 	</suite> <!-- Suite --> 
