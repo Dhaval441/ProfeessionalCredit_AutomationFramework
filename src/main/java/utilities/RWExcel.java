@@ -28,9 +28,25 @@ public class RWExcel {
 	XSSFCell cell;
 	String tdMod;
 	CommonUtilities objCU = new CommonUtilities();
-	String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
-	String resourceFolderPath = objCU.readPropertyFile(filepath, "ResourcesPath");
-	String filePath = System.getProperty("user.dir") + resourceFolderPath + ("\\dataPool\\TestData.xlsx");
+//	String filepath = System.getProperty("user.dir") + "\\src\\main\\resources\\datapool\\" + "EnvData.properties";
+//	String resourceFolderPath = objCU.readPropertyFile(filepath, "ResourcesPath");
+//	String filePath = System.getProperty("user.dir") + resourceFolderPath + ("\\dataPool\\TestData.xlsx");
+	
+	String baseDir = System.getProperty("user.dir");
+
+	String envFilePath = baseDir 
+	        + File.separator + "src"
+	        + File.separator + "main"
+	        + File.separator + "resources"
+	        + File.separator + "datapool"
+	        + File.separator + "EnvData.properties";
+
+	String resourceFolderPath = objCU.readPropertyFile(envFilePath, "ResourcesPath");
+
+	String excelFilePath = baseDir
+	        + File.separator + resourceFolderPath
+	        + File.separator + "dataPool"
+	        + File.separator + "TestData.xlsx";
 
 	int rc, cc;
 
@@ -42,12 +58,12 @@ public class RWExcel {
 		File file;
 		FileInputStream fin;
 		try {
-			file = new File(filePath);
+			file = new File(excelFilePath);
 			fin = new FileInputStream(file);
 			workbook = new XSSFWorkbook(fin);
 			fin.close();
 		} catch (FileNotFoundException e) {
-			log.error("Excel file not found: " + filePath);
+			log.error("Excel file not found: " + excelFilePath);
 		} catch (IOException e) {
 			log.error("Error while reading a Test Data file <readExcel>: " + e.getMessage());
 		}
@@ -218,7 +234,7 @@ public class RWExcel {
 		FileInputStream fin;
 		String cellValue = null;
 		try {
-			file = new File(filePath);
+			file = new File(excelFilePath);
 			fin = new FileInputStream(file);
 			workbook = new XSSFWorkbook(fin);
 			sheetName = sheetName.trim();
@@ -269,7 +285,7 @@ public class RWExcel {
 		sheetName = sheetName.trim();
 		int totalTestDataCount = 1;
 		try {
-			file = new File(filePath);
+			file = new File(excelFilePath);
 			fin = new FileInputStream(file);
 			workbook = new XSSFWorkbook(fin);
 
