@@ -1,0 +1,73 @@
+# ------------------------------
+# Maven / Build
+# ------------------------------
+/target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build/
+
+# ------------------------------
+# Logs
+# ------------------------------
+/logs/
+/*.log
+/debug.log
+
+# ------------------------------
+# TestNG / Reports
+# ------------------------------
+/test-output/
+/allure-results/
+/allure-report/
+/ExtentReports/
+/reports/
+/src/main/resources/reports/**/*.html
+/src/main/resources/reports/**/*.png
+/src/main/resources/**/*.zip
+
+# ------------------------------
+# Eclipse / IDE
+# ------------------------------
+.project
+.classpath
+.settings/
+.metadata/
+
+# ------------------------------
+# IntelliJ
+# ------------------------------
+.idea/
+*.iml
+
+# ------------------------------
+# OS Files
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Downloads / Temp files
+# ------------------------------
+/AutomationDownloads/
+/tmp/
+/temp/
+
+# ------------------------------
+# Maven Local Repo (IMPORTANT 🔥)
+/.m2/
+/repository/
+
+# ------------------------------
+# Node (if any)
+/node_modules/
+
+# ------------------------------
+# Others
+*.jar
+*.war
+*.ear
+*.zip
