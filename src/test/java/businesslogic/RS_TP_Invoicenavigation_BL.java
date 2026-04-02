@@ -42,20 +42,21 @@ public class RS_TP_Invoicenavigation_BL extends ExtentReportBuilder{
 			objCM.onMouseHover(driver, objInvoiceOR.invoiceTab);
 
 
-			if (objCM.isElementPresent(driver, objInvoiceOR.mainTab)) {
+			if (objCM.isElementPresent(driver, objInvoiceOR.menubutton)) {
 				ExtentReportBuilder.ReportTestStep("PASSED", "PASS",
 						"User navigated successfully to the invoice tab", mthName);
 			} else {
 				ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
 						"User not  able to navigate successfully to the invoice tab", mthName);
 			}
+			
 		} catch (Exception e) {
 			ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
 					"User failed to navigate invoice tab"+e, mthName);
 			e.printStackTrace();
 			Assert.fail();
 		}
-
+  
 	}
 	/*
 	 * User is able to see the report download Option single PDF download button
