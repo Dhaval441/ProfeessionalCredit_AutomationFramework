@@ -386,7 +386,6 @@ public class RS_TP_Invoicenavigation_BL extends ExtentReportBuilder{
 		}
 	driver.navigate().refresh();
 	}
-	
 	/*
 	 * invoice: Indivisual report 
 	 */
