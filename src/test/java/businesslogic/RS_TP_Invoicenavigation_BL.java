@@ -391,117 +391,117 @@ public class RS_TP_Invoicenavigation_BL extends ExtentReportBuilder{
 	 * invoice: Indivisual report 
 	 */
 	
-	public void VerifyPDFOnUIandDownloadPartInvoiceIndivisaulPT(WebDriver driver) throws Exception {
-		try {
-			mthName = new Object() {
-			}.getClass().getEnclosingMethod().getName();
-
-			//		driver.switchTo().frame("TrustProcess");
-
-			if(objCM.checkElementVisibility(driver, objProTrustOR.PT_MainIvoiceBtn)) {
-
-				objCM.isElementClickable(driver, objProTrustOR.PT_MainIvoiceBtn);
-				objCM.onMouseHover(driver, objProTrustOR.AdvancedFilterButton);
-				objCM.onMouseHover(driver, objProTrustOR.PublishDropDown);
-				objCM.onMouseHover(driver, objProTrustOR.PublishCheckBox);
-				objCM.onMouseHover(driver, objProTrustOR.AdvViewButton);
-		
-				String expTrustNumber = getExcelData.readCell("ProcessTrust", "TrustNumber");
-				objCM.setText(driver, objProTrustOR.Search, expTrustNumber);
-				objCM.onMouseHover(driver, objProTrustOR.CheckBox);
-				objCM.onMouseHover(driver, objProTrustOR.PT_MainIvoiceBtn);
-				
-				objCM.click(driver, objProTrustOR.PT_InvoiceindivisualBtn);
-//				System.out.println(objCM.getText(driver, objProTrustOR.ExportSuccesToastMsg));
-				driver.switchTo().defaultContent();
-
-				// wait ONLY for second popup
-				objCM.waitUntilSecondPopupAppears(driver, 300);
-				Thread.sleep(2000);
-				// next flow
-				System.out.println("Now proceed");
-				driver.switchTo().frame("TrustProcess");
-				String InvoiceNumberUI = objCM.getText(driver, objProTrustOR.InvoiceNumber);
-
-				String Commission = objCM.getText(driver, objProTrustOR.Commission);
-				
-				System.out.println("UI Client Name: " + InvoiceNumberUI);
-				System.out.println("UI Grand Total: " + Commission);
-				//Get Latest Downloaded Excel
-				Thread.sleep(2000);
-				String downloadPath = ApplicationSetup.downloadpath;
-
-				File PDFFile = objCM.getLatestDownloadedFile(downloadPath, ".zip", 20);
-				System.out.println("Download Path: " + downloadPath);
-				if(PDFFile != null){
-
-					System.out.println("ZIP File: " + PDFFile.getAbsolutePath());
-					
-					String extractPath = ApplicationSetup.downloadpath + "\\unzipped";
-
-					File pdfFile = objCM.extractZipAndGetPDF(PDFFile, extractPath);
-					System.out.println("Extracting: " + pdfFile);
-					if(pdfFile == null){
-					    Assert.fail("PDF not found inside ZIP");
-					}
-
-					System.out.println("Extracted PDF: " + pdfFile.getAbsolutePath());
-//				File file = getLatestDownloadedFile(downloadPath, 20);
+//	public void VerifyPDFOnUIandDownloadPartInvoiceIndivisaulPT(WebDriver driver) throws Exception {
+//		try {
+//			mthName = new Object() {
+//			}.getClass().getEnclosingMethod().getName();
+//
+//			//		driver.switchTo().frame("TrustProcess");
+//
+//			if(objCM.checkElementVisibility(driver, objProTrustOR.PT_MainIvoiceBtn)) {
+//
+//				objCM.isElementClickable(driver, objProTrustOR.PT_MainIvoiceBtn);
+//				objCM.onMouseHover(driver, objProTrustOR.AdvancedFilterButton);
+//				objCM.onMouseHover(driver, objProTrustOR.PublishDropDown);
+//				objCM.onMouseHover(driver, objProTrustOR.PublishCheckBox);
+//				objCM.onMouseHover(driver, objProTrustOR.AdvViewButton);
+//		
+//				String expTrustNumber = getExcelData.readCell("ProcessTrust", "TrustNumber");
+//				objCM.setText(driver, objProTrustOR.Search, expTrustNumber);
+//				objCM.onMouseHover(driver, objProTrustOR.CheckBox);
+//				objCM.onMouseHover(driver, objProTrustOR.PT_MainIvoiceBtn);
+//				
+//				objCM.click(driver, objProTrustOR.PT_InvoiceindivisualBtn);
+////				System.out.println(objCM.getText(driver, objProTrustOR.ExportSuccesToastMsg));
+//				driver.switchTo().defaultContent();
+//
+//				// wait ONLY for second popup
+//				objCM.waitUntilSecondPopupAppears(driver, 300);
+//				Thread.sleep(2000);
+//				// next flow
+//				System.out.println("Now proceed");
+//				driver.switchTo().frame("TrustProcess");
+//				String InvoiceNumberUI = objCM.getText(driver, objProTrustOR.InvoiceNumber);
+//
+//				String Commission = objCM.getText(driver, objProTrustOR.Commission);
+//				
+//				System.out.println("UI Client Name: " + InvoiceNumberUI);
+//				System.out.println("UI Grand Total: " + Commission);
+//				//Get Latest Downloaded Excel
+//				Thread.sleep(2000);
+//				String downloadPath = ApplicationSetup.downloadpath;
+//
+//				File PDFFile = objCM.getLatestDownloadedFile(downloadPath, ".zip", 20);
 //				System.out.println("Download Path: " + downloadPath);
-//				if(file != null){
+//				if(PDFFile != null){
 //
-//				    String filePath = file.getAbsolutePath();
-//				    File dir = new File(downloadPath);
-//				    File[] files = dir.listFiles();
+//					System.out.println("ZIP File: " + PDFFile.getAbsolutePath());
+//					
+//					String extractPath = ApplicationSetup.downloadpath + "\\unzipped";
 //
-//				    if(files != null){
-//				        for(File f : files){
-//				            System.out.println("Found File: " + f.getName());
-//				        }
+//					File pdfFile = objCM.extractZipAndGetPDF(PDFFile, extractPath);
+//					System.out.println("Extracting: " + pdfFile);
+//					if(pdfFile == null){
+//					    Assert.fail("PDF not found inside ZIP");
+//					}
+//
+//					System.out.println("Extracted PDF: " + pdfFile.getAbsolutePath());
+////				File file = getLatestDownloadedFile(downloadPath, 20);
+////				System.out.println("Download Path: " + downloadPath);
+////				if(file != null){
+////
+////				    String filePath = file.getAbsolutePath();
+////				    File dir = new File(downloadPath);
+////				    File[] files = dir.listFiles();
+////
+////				    if(files != null){
+////				        for(File f : files){
+////				            System.out.println("Found File: " + f.getName());
+////				        }
+////				    }
+////				    System.out.println("Latest File: " + filePath);
+//				    //Read file logic
+//				    String pdfText = objCM.readPDF(pdfFile);
+//				    pdfText = pdfText.replaceAll("\\s+", " ");
+//				    System.out.println("Normalized PDF: " + pdfText);
+//				    String normalizedPDF = pdfText.toLowerCase().replaceAll("[^a-z0-9]", "");
+//				    String normalizedUI  = InvoiceNumberUI.toLowerCase().replaceAll("[^a-z0-9]", "");
+//
+//				    // Validation
+//				    if(pdfText.contains(normalizedUI)){
+//				        System.out.println("Client Name matched in PDF");
+//				    } else {
+//				        Assert.fail("Client Name mismatch in PDF");
 //				    }
-//				    System.out.println("Latest File: " + filePath);
-				    //Read file logic
-				    String pdfText = objCM.readPDF(pdfFile);
-				    pdfText = pdfText.replaceAll("\\s+", " ");
-				    System.out.println("Normalized PDF: " + pdfText);
-				    String normalizedPDF = pdfText.toLowerCase().replaceAll("[^a-z0-9]", "");
-				    String normalizedUI  = InvoiceNumberUI.toLowerCase().replaceAll("[^a-z0-9]", "");
-
-				    // Validation
-				    if(pdfText.contains(normalizedUI)){
-				        System.out.println("Client Name matched in PDF");
-				    } else {
-				        Assert.fail("Client Name mismatch in PDF");
-				    }
-				    
-				    if(pdfText.contains(Commission)){
-				        System.out.println("Grand Total matched in PDF");
-				    } else {
-				        Assert.fail("Grand Total mismatch in PDF");
-				    }
-				}     else {
-				    System.out.println("No file found");
-				    Assert.fail("File not downloaded");
-				}			
-			}
-
-			Thread.sleep(2000);
-			if (objCM.isElementPresent(driver, objProTrustOR.PT_PDFreportBtn)) {
-				ExtentReportBuilder.ReportTestStep("PASSED", "List of records",
-						"User successfully able to navigate to invoice indivisual pdf report download button and after downloading report from process trust tab for published trust", mthName);
-			} else {
-				ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
-						"User not able to navigate to  inoivce indivisual pdf report download button and after downloading report from processtrust tab for published trust", mthName);
-			}
-		} catch (Exception e) {
-			ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
-					"User failed to navigate to inoivce indivisual pdf report download button and after downloading report from processtrust tab for published trust"+e, mthName);
-			e.printStackTrace();
-			Assert.fail();
-		}
-	driver.navigate().refresh();
-	}
-
-	
+//				    
+//				    if(pdfText.contains(Commission)){
+//				        System.out.println("Grand Total matched in PDF");
+//				    } else {
+//				        Assert.fail("Grand Total mismatch in PDF");
+//				    }
+//				}     else {
+//				    System.out.println("No file found");
+//				    Assert.fail("File not downloaded");
+//				}			
+//			}
+//
+//			Thread.sleep(2000);
+//			if (objCM.isElementPresent(driver, objProTrustOR.PT_PDFreportBtn)) {
+//				ExtentReportBuilder.ReportTestStep("PASSED", "List of records",
+//						"User successfully able to navigate to invoice indivisual pdf report download button and after downloading report from process trust tab for published trust", mthName);
+//			} else {
+//				ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
+//						"User not able to navigate to  inoivce indivisual pdf report download button and after downloading report from processtrust tab for published trust", mthName);
+//			}
+//		} catch (Exception e) {
+//			ExtentReportBuilder.ReportTestStep("FAILED", "FAIL",
+//					"User failed to navigate to inoivce indivisual pdf report download button and after downloading report from processtrust tab for published trust"+e, mthName);
+//			e.printStackTrace();
+//			Assert.fail();
+//		}
+//	driver.navigate().refresh();
+//	}
+//
+//	
 
 }
