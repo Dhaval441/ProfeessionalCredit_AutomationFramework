@@ -212,8 +212,8 @@ public class ApplicationSetup extends ExtentReportBuilder {
 			    options.addArguments("--no-sandbox");
 			    options.addArguments("--disable-dev-shm-usage");
 			    options.addArguments("--remote-allow-origins=*");
-//				options.addArguments("--headless=new");
-//				options.addArguments("--window-size=1920,1080");
+				options.addArguments("--headless=new");
+				options.addArguments("--window-size=1920,1080");
 			    objCU.printToConsole("Started Options");
 
 			    driver = new ChromeDriver(options);
@@ -222,68 +222,7 @@ public class ApplicationSetup extends ExtentReportBuilder {
 			    objCU.printToConsole("Browser Launched");
 
 			    break;
-//			case "Chrome":
-//				WebDriverManager.chromedriver().setup();
-//
-//				//System.setProperty("webdriver.chrome.driver",SetObjectProperties.appConfig.getPropertyValue("ChromeDriver")); 
-//				objCU.printToConsole("Browser Driver executable downloaded");
-//				capabilities.setBrowserName(browser);
-//				String currentDir = System.getProperty("user.dir");
-//
-//				ChromeOptions options = new ChromeOptions();
-//				System.setProperty("webdriver.chrome.whitelistedIps", "");
-//
-//				//		downloadpath = currentDir + "/Download";
-//				WebDriverManager.chromedriver().setup();
-//
-//				LoggingPreferences logPrefs = new LoggingPreferences();
-//				logPrefs.enable(LogType.BROWSER, Level.ALL);
-//				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-//				chromePrefs.put("profile.default_content_settings.popups", 0);
-//				chromePrefs.put("download.prompt_for_download", false);
-//				chromePrefs.put("download.default_directory", downloadpath);		
-//				chromePrefs.put("download.default_directory", "C:\\Users\\mangesh.gadekar\\Downloads");
-//				chromePrefs.put("profile.default_content_setting_values.automatic_downloads", 1);
-//				chromePrefs.put("download.directory_upgrade", true);
-//				chromePrefs.put("safebrowsing.enabled", true);
-//				chromePrefs.put("plugins.always_open_pdf_externally", true); 
-//				chromePrefs.put("profile.content_settings.exceptions.automatic_downloads.*.setting", 1);
-//				chromePrefs.put("download.extensions_to_open", "xml,csv,xls,xlsx,doc,docx,txt");
-//				chromePrefs.put("profile.cookie_controls_mode", 0);
-//
-//				objCU.printToConsole("Chrome Prefs enabled");
-//
-//				options.setExperimentalOption("prefs", chromePrefs);
-//				options.addArguments("--ignore-certificate-errors");
-//				options.addArguments("--allow-running-insecure-content");
-//				options.addArguments("--incognito");
-////				options.addArguments("--headless=new");
-//				options.addArguments("--window-size=1920,1080");
-////				options.addArguments("--start-maximized");
-//				options.addArguments("--disable-extensions");
-////				options.addArguments("--enable-extensions");
-//				options.addArguments("disable-popup-blocking");
-//				options.addArguments("disable-infobars");
-//				options.addArguments("--disable-gpu");
-//				options.addArguments("--no-sandbox");
-//				options.addArguments("--disable-dev-shm-usage");
-//				options.addArguments("--remote-allow-origins=*");
-//				objCU.printToConsole("Started Options");
-//			
-//
-//				if (selGrid) {
-//					System.out.println("Remote Node URL: " + nodeUrl);
-//
-////					driver= new RemoteWebDriver(new java.net.URL(nodeUrl), cap);
-////					driver.manage().window().maximize();
-//				} else {
-//					driver = new ChromeDriver(options);
-////					driver.manage().window().maximize();
-//					driver.manage().timeouts().implicitlyWait(wt,TimeUnit.SECONDS);
-//				}
-//				objCU.printToConsole("Browser Launched");
-//
-//				break;
+
 
 			case "Firefox":  
 				WebDriverManager.firefoxdriver().setup();
